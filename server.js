@@ -6,6 +6,7 @@ app.use(express.json());
 app.use('/', require('./server/route/paymentReceiversRoute'));
 app.use('/', require('./server/route/loginRoute'));
 app.use('/', require('./server/route/servicesRoute'));
+app.use('/', require('./server/route/serviceRequestRoute'));
 
 app.use(cors());
 
