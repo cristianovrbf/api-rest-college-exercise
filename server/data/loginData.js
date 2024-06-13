@@ -47,3 +47,15 @@ exports.createUser = async function (user){
 
     return data;
 }
+
+exports.validateIfNotExistRepeatedUser = async function (user){
+    let data = null;
+    
+    try{
+        data = await database.any("SELECT * FROM payments.users WHERE email = $1 or cpf = $2", [user.email, user.cpf]);
+    }catch(error){
+        data = false;
+    }
+
+    return data;
+}

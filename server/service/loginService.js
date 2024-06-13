@@ -11,3 +11,7 @@ exports.updateUserPassword = (user) => {
 exports.createNewUser = (user) => {
     return loginData.createUser(user);
 }
+
+exports.validatedNewUser = (user) => {
+    return loginData.validateIfNotExistRepeatedUser(user);
+}
