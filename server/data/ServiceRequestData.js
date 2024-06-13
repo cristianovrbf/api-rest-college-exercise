@@ -12,7 +12,9 @@ exports.getServiceRequestOfUser = async function(user){
                 service.description,
                 service_request.status,
                 service.price,
+                service.id as service,
                 service_request.predicted_realize_date,
+                users.id as user_id,
                 users.name
             from payments.service_request as service_request
             inner join payments.service as service
@@ -27,6 +29,7 @@ exports.getServiceRequestOfUser = async function(user){
                 users.deleted_at is null
             and
                 users.id = $1
+            order by service_request.request_date ASC
         `, [user.id]);
     }catch(error){
         data = false;

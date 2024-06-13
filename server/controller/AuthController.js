@@ -12,7 +12,7 @@ exports.login = async(req, res) => {
         if(!user){
             return {
                 status: 401,
-                message: 'User not found!',
+                message: 'Usuário não encontrado!',
                 data: {
                     email: req.body.email,
                     status: false
@@ -25,7 +25,7 @@ exports.login = async(req, res) => {
         if(!passwordValidate){
             return {
                 status: 401,
-                message: 'Unauthorized access',
+                message: 'Acesso não autorizado!',
                 data: {
                     email: req.body.email,
                     status: false
@@ -37,7 +37,7 @@ exports.login = async(req, res) => {
 
         return {
             status: 200,
-            message: 'Success',
+            message: 'Login realizado com sucesso!',
             data: {
                 token: token,
                 user_login: user.email,
@@ -49,7 +49,7 @@ exports.login = async(req, res) => {
         console.error(error);
         return {
             status: 500,
-            message: 'Unauthorized access',
+            message: 'Acesso não autorizado!',
             data:{
                 status: false
             }
@@ -67,7 +67,7 @@ exports.verifyAuthorization = async (req, res, next) => {
     if(!token){
         return res.status(401).json({
             status: 401,
-            message: 'Unauthorized access',    
+            message: 'Acesso não autorizado!',    
         });
     }
 
@@ -79,7 +79,7 @@ exports.verifyAuthorization = async (req, res, next) => {
     }catch(error){
         return res.status(401).json({
             status: 401,
-            message: 'Invalid Token',    
+            message: 'Token inválido!',    
         });
     }
 }
@@ -91,7 +91,7 @@ exports.changePassword = async (req, res) => {
         if(!user){
             return {
                 status: 401,
-                message: 'User not found!',
+                message: 'Usuário não encontrado!',
                 data: {
                     email: req.body.email,
                     status: false
@@ -104,7 +104,7 @@ exports.changePassword = async (req, res) => {
         if(!passwordValidate){
             return {
                 status: 401,
-                message: 'Senha atual digita está incorreta!',
+                message: 'Senha atual digitada está incorreta!',
                 data: {
                     email: req.body.email,
                     status: false
@@ -127,7 +127,7 @@ exports.changePassword = async (req, res) => {
 
         return {
             status: 200,
-            message: 'Success',
+            message: 'Sucesso!',
             data: {
                 user_login: user.email,
                 user_name: user.name,
@@ -138,7 +138,7 @@ exports.changePassword = async (req, res) => {
         console.error(error);
         return {
             status: 500,
-            message: 'Unauthorized access',
+            message: 'Acesso não autorizado!',
             data:{
                 status: false
             }
