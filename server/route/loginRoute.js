@@ -7,12 +7,12 @@ router.post('/login', async function(req, res){
     res.json(data);
 })
 
-router.put('/change-password', AuthController.verifyAuthorization, async function(req, res){
+router.put('/change-password', async function(req, res){
     const data = await AuthController.changePassword(req, res);
     res.json(data);
 })
 
-router.post('/user', AuthController.verifyAuthorization, async function(req, res){
+router.post('/user', async function(req, res){
     const data = await AuthController.createUser(req, res);
     res.json(data);
 })

@@ -60,8 +60,16 @@ exports.login = async(req, res) => {
 exports.verifyAuthorization = async (req, res, next) => {
 
     const headerToken = req.headers["authorization"];
+    let token = null;
     
-    const token = headerToken.split(" ")[1] ?? headerToken;
+    try{
+        token = headerToken.split(" ")[1] ?? headerToken;
+    }catch(error){
+        return res.status(401).json({
+            status: 401,
+            message: 'Acesso não autorizado!',    
+        });
+    }
     
 
     if(!token){
