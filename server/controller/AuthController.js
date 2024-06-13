@@ -160,7 +160,7 @@ exports.createUser = async(req, res) => {
 
         const existingUser = await loginService.validatedNewUser(req.body.user);
 
-        if(existingUser){
+        if(existingUser && existingUser.length > 0){
             return {
                 status: 401,
                 message: 'CPF/e-mail já cadastrado(s)!',
